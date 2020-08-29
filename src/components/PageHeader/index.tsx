@@ -1,14 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import './styles.css';
+
 import logoImg from '../../assets/images/logo.svg';
 import backIcon from '../../assets/images/icons/back.svg';
 
-interface BatataProps {
+interface PageHeaderProps {
     title: string;
+    description?: string;
 }
 
-const Batata: React.FunctionComponent<BatataProps> = (props) => {
+const PageHeader: React.FunctionComponent<PageHeaderProps> = (props) => {
 
     return (
         <header className="page-header" >
@@ -18,12 +21,13 @@ const Batata: React.FunctionComponent<BatataProps> = (props) => {
                 </Link>
                 <img src={logoImg} alt="Proffy" />
             </div>
+
             <div className="header-content">
                 <strong>{props.title}</strong>
-                {props.children}
+                { props.description && <p>{props.description}</p> }
             </div>
-        </header >
+        </header>
     );
 }
 
-export default Batata;
+export default PageHeader;
